@@ -30,9 +30,9 @@
 		<button type="button" class="category_{$val->category_srl}">-</button>
 		<!--@end-->
 		<!--@end-->
-		<a href="{getSiteUrl($widget_info->domain, '','mid',$widget_info->module_info->mid, 'category',$val->category_srl)}" class="nav_tree_label <!--@if($val->selected)-->selected<!--@end-->">{$val->text}</a>
+		<a href="{getSiteUrl($widget_info->domain, '','mid',$widget_info->module_info->mid, 'category',$val->category_srl)}" class="nav_tree_label <!--@if($val->selected)-->selected<!--@end-->" <!--@if($val->color&&$val->color!='transparent')-->style="color:{$val->color};"<!--@end-->>{$val->text}</a>
 		<!--@if($val->document_count)-->
-		<span class="sum">({$val->document_count})</span>
+		<span class="sum" <!--@if($val->color&&$val->color!='transparent')-->style="color:{$val->color};"<!--@end-->>({$val->document_count})</span>
 		<!--@end-->
 		<!--@if($val->child_count)-->
 		{@$_pDepth++}
