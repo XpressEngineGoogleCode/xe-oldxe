@@ -90,5 +90,39 @@
 			<description xml:lang="ru">Пожалуйста, введите имена групп для отображения, разделяя их запятой(,).</description>
 			<description xml:lang="zh-TW">要顯示的目標模組名稱以，(逗號)做區隔。</description>
 		</var>
+		<var id="order_index">
+			<type>select</type>
+			<name xml:lang="ko">정렬 기준</name>
+			<description xml:lang="ko">회원 리스트 정렬 기준을 선택해주세요.(기본 가입일)</description>
+            <options>
+                <value>regdate</value>
+                <name xml:lang="ko">가입일</name>
+            </options>
+            <options>
+                <value>user_id</value>
+                <name xml:lang="ko">id</name>
+            </options>
+            <options>
+                <value>nick_name</value>
+                <name xml:lang="ko">닉네임</name>
+            </options>
+            <options>
+                <value>last_login</value>
+                <name xml:lang="ko">마지막 로그인</name>
+            </options>
+		</var>
+		<var id="order_type">
+			<type>select</type>
+			<name xml:lang="ko">정렬 방식</name>
+			<description xml:lang="ko">회원 리스트 정렬 방식을 선택해주세요.(기본 내림차순)</description>
+            <options>
+                <value>desc</value>
+                <name xml:lang="ko">내림차순</name>
+            </options>
+            <options>
+                <value>asc</value>
+                <name xml:lang="ko">오름차순</name>
+            </options>
+		</var>
 	</extra_vars>
 </widget>
