@@ -93,21 +93,26 @@
 		<var id="order_index">
 			<type>select</type>
 			<name xml:lang="ko">정렬 기준</name>
-			<description xml:lang="ko">회원 리스트 정렬 기준을 선택해주세요.(기본 가입일)</description>
+			<description xml:lang="ko">회원 리스트 정렬 기준을 선택해주세요.(기본은 그룹 등록일) 
+			가상사이트의 경우 그룹 등록일이 가상사이트 가입일입니다.</description>
             <options>
-                <value>regdate</value>
-                <name xml:lang="ko">가입일</name>
+                <value>member_group.regdate</value>
+                <name xml:lang="ko">그룹 등록일</name>
             </options>
             <options>
-                <value>user_id</value>
+                <value>member.regdate</value>
+                <name xml:lang="ko">회원 가입일</name>
+            </options>
+            <options>
+                <value>member.user_id</value>
                 <name xml:lang="ko">id</name>
             </options>
             <options>
-                <value>nick_name</value>
+                <value>member.nick_name</value>
                 <name xml:lang="ko">닉네임</name>
             </options>
             <options>
-                <value>last_login</value>
+                <value>member.last_login</value>
                 <name xml:lang="ko">마지막 로그인</name>
             </options>
 		</var>

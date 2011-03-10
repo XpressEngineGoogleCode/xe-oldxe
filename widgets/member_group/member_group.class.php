@@ -39,7 +39,7 @@
             $obj->selected_group_srl = implode(',',$target_group);
             $obj->list_count = $list_count;
 			/* 20110308 : 정렬 관련 확장 변수 추가 시작 */
-			$obj->sort_index = ($args->order_index)?'member.'.$args->order_index:'member.regdate';
+			$obj->sort_index = ($args->order_index)?$args->order_index:'member_group.regdate';
 			$obj->sort_order = ($args->order_type)?$args->order_type:'desc';
 			/* 20110308 : 정렬 관련 확장 변수 추가 끝 */
             $output = executeQuery('member.getMemberListWithinGroup', $obj);
