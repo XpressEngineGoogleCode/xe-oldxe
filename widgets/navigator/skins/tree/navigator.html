@@ -24,7 +24,7 @@
 		<button type="button" class="menu_{$val->node_srl}">-</button>
 		<!--@end-->
 		<!--@end-->
-		<a href="{$val->href}" class="nav_tree_label <!--@if($val->selected)-->selected<!--@end-->">{$val->text}</a>
+		<a href="{$val->href}" class="nav_tree_label <!--@if($val->selected)-->selected<!--@end-->" <!--@if($val->open_window =='Y')-->target="_blank" <!--@end-->>{$val->text}</a>
 		<!--@if($val->child_count)-->
 		{@$_pDepth++}
 		<ul>
