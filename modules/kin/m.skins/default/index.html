@@ -1,0 +1,94 @@
+<!--%import("css/mkin.css")-->
+{@ Context::addJsFile("./common/js/jquery.js", true, '', -100000) }
+
+<div class="bd">
+	<div class="hx h2">
+		<h2>
+			<a href="{getUrl('','vid',$vid,'mid',$mid)}">{$module_info->browser_title}<!--@if($module_info->sub_title)--> - {$module_info->sub_title}<!--@end--></a>
+			<!--@if($module_info->use_category == 'Y')--><a href="{getUrl('page','','act','dispKinCategory','')}" class="ca">{$lang->category}</a><!--@end-->
+		</h2>
+		<a href="{getUrl('act','dispKinWrite','document_srl','')}" class="write">{$lang->cmd_ask}</a>
+	</div>
+	<div class="ln">
+		<ul>
+			<li class="noLine <!--@if(!$type)-->active<!--@end-->">
+				<!--@if($search_keyword)-->
+				<a href="{getUrl('page',1,'type','')}">{$lang->search_result}</a>
+				<!--@else-->
+				<a href="{getUrl('page',1,'type','')}">{$lang->kin_all_questions}</a>
+				<!--@end-->
+			</li>
+			<li <!--@if($type=='questions')-->class="active"<!--@end-->><a href="{getUrl('page',1,'type','questions')}">{$lang->kin_main_tabs[2]}</a></li>
+			<li <!--@if($type=='replies')-->class="active"<!--@end-->><a href="{getUrl('page',1,'type','replies')}">{$lang->kin_main_tabs[3]}</a></li>
+			<li <!--@if($type=='selected')-->class="active"<!--@end-->><a href="{getUrl('page',1,'type','selected')}">{$lang->kin_main_tabs[4]}</a></li>
+			<!--@if($is_logged)-->
+			<li <!--@if($type=='my_questions')-->class="active"<!--@end-->><a href="{getUrl('page',1,'type','my_questions')}">{$lang->kin_main_tabs[5]}</a></li>
+			<li <!--@if($type=='my_replies')-->class="active"<!--@end-->><a href="{getUrl('page',1,'type','my_replies')}">{$lang->kin_main_tabs[6]}</a></li>
+			<!--@end-->
+			</ul>
+			<button type="button" class="next" title="{$lang->more}"></button>
+	</div>
+	<!--@if(count($document_list))-->
+	<ul class="lt"> 
+		<!--@foreach($document_list as $key => $document)-->
+		<li> 
+			<a href="{$document->getPermanentUrl()}"> 
+				<span class="title">
+					<span class="pointGift">{number_format($document_kins[$document->get('document_srl')])}</span>
+					<!--@if($module_info->use_category=='Y'&&$document->get('category_srl'))-->{$categories[$document->get('category_srl')]->title} &rsaquo; <!--@end--><strong>{htmlspecialchars($document->getTitleText())}</strong> <!--@if($document->getCommentCount())--><em>[{$document->getCommentCount()}]</em><!--@end-->
+				</span> 
+				<span class="auth"><em>{htmlspecialchars($document->get('nick_name'))}</em> <span class="time">{$document->getRegdate('Y.m.d')}</span></span> 
+			</a> 
+		</li> 
+		<!--@end-->
+	</ul>
+	<!--@elseif(count($reply_list))-->
+	<ul class="lt"> 
+		<!--@foreach($reply_list as $key => $reply)-->
+		<li> 
+			<a href="{$reply->getPermanentUrl()}"> 
+				<span class="title">
+					<span class="pointGift">{number_format($document_kins[$reply->get('document_srl')])}</span>
+					<!--@if($module_info->use_category=='Y'&&$reply->get('category_srl'))-->{$categories[$reply->get('category_srl')]->title} &rsaquo; <!--@end--><strong>{($reply->getSummary(80))}</strong>
+				</span> 
+				<span class="auth"><em>{htmlspecialchars($reply->get('nick_name'))}</em> <span class="time">{$reply->getRegdate('Y.m.d')}</span></span> 
+			</a> 
+		</li> 
+		<!--@end-->
+	</ul>
+	<!--@else-->
+	<div class="co">
+		<p>{$lang->msg_document_is_null}</p>
+	</div>
+	<!--@end-->
+	<div class="pn">
+        <!--@if($page != 1)-->
+		<a href="{getUrl('page',$page-1,'document_srl','','division',$division,'last_division',$last_division,'entry','')}">&lsaquo; {$lang->cmd_prev}</a> 
+        <!--@endif-->
+        <strong>{$page} / {$page_navigation->last_page}</strong>
+        <!--@if($page != $page_navigation->last_page)-->
+		<a href="{getUrl('page',$page+1,'document_srl','','division',$division,'last_division',$last_division,'entry','')}">{$lang->cmd_next} &rsaquo;</a>
+        <!--@endif-->
+	</div>
+</div>
+
+<script type="text/javascript"> 
+//<![CDATA[
+jQuery(function($){
+	var lnb = $('.ln>ul');
+	if($('.ln').width() > lnb.width()){
+		$('.ln>button').hide();
+	}
+	$('.ln>button').click(function(){
+		var t = $(this);
+		if (t.hasClass('next')) {
+			lnb.animate({left:"-100%"},100);
+			$(this).removeClass('next').addClass('prev');
+		} else {
+			lnb.animate({left:"0"},100);
+			$(this).removeClass('prev').addClass('next');
+		}
+	});
+});
+//]]>
+</script> 
