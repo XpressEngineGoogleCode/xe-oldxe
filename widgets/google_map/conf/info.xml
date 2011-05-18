@@ -6,10 +6,10 @@
 	<version>0.1</version>
 	<date>2011-04-15</date>
 
-	<author email_address="ryin005@nhn.com">
-		<name xml:lang="ko">xe master</name>
-		<name xml:lang="en">xe master</name>
-		<name xml:lang="zh-CN">xe master</name>
+	<author email_address="developers@xpressengine.com">
+		<name xml:lang="ko">NHN</name>
+		<name xml:lang="en">NHN</name>
+		<name xml:lang="zh-CN">NHN</name>
 	</author>
 
 	<extra_vars>
