@@ -33,17 +33,7 @@
 					<h1><a href="{$cafeHomeURL}">Cafe&nbsp;XE</a></h1>
 					<p class="url"><a href="{$cafeHomeURL}">{$cafeHomeURL}</a></p>
 					<a href="{getUrl('','module','admin')}" class="admin">Admin</a>
-                    <!--@if(Context::get('is_homepage'))-->
-                    <ul class="topMenu">
-                    <!--@if(Context::getDefaultUrl())-->
-                        <li class="homepage"><a href="{Context::getDefaultUrl()}">Home</a></li>
-                    <!--@end-->
-                    <!--@if($grant->manager)-->
-                        <li class="setup"><a href="{getUrl('act','dispHomepageManage')}">{$lang->cmd_cafe_setup}</a></li>
-                    <!--@end-->
-                    </ul>
-                    <!--@end-->
-	
+
 					<form action="{getUrl()}" method="post" class="search">
 						<fieldset>
 							<input type="hidden" name="vid" value="{$vid}" />
@@ -72,12 +62,7 @@
                 <div class="extension e1">
                     <!--// Site Status -->
 					<div id="info" class="info cafe">
-						<!--@if($site_module_info->site_srl>0)-->
-						<div class="section cafeInfo">
-							<button type="button" class="tab" onclick="document.getElementById('info').className='info cafe'">{$lang->cafe_info}</button>
-							<img class="zbxe_widget_output" widget="site_info" skin="default" />
-						</div>
-						<!--@end-->
+
 						<!--// Login Info Widget -->
 						<div class="section memberInfo">
 							<img class="zbxe_widget_output" widget="login_info" skin="cafe_official" />
@@ -116,26 +101,6 @@
 				
                 <hr class="hr" />
 				
-				<!--@if($mid=='home')-->
-				<div class="extension e2">
-					<div class="section newMember">
-						<h2>{$lang->new_members}</h2>
-						<img class="zbxe_widget_output" widget="member_group" skin="default" list_count="5" />
-					</div>
-					<div class="section docRank">
-						<h2>{$lang->document_ranking}</h2>
-						<img class="zbxe_widget_output" widget="rank_count" rankby="document" skin="default" list_count="5" />
-					</div>
-					<div class="section replyRank">
-						<h2>{$lang->comment_ranking}</h2>
-						<img class="zbxe_widget_output" widget="rank_count" rankby="comment" skin="default" list_count="5" />
-					</div>
-					<div class="section onMember">
-						<h2>{$lang->logged_users}</h2>
-						<img class="zbxe_widget_output" widget="logged_members" skin="default" list_count="99999" />
-					</div>
-				</div>
-				<!--@end-->
 				
             </div>
             <!-- /#body -->
